@@ -15,6 +15,7 @@ mongoose.set('useCreateIndex', true);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
 
 // index route
 app.route('/').get(function(req, res) {
@@ -23,7 +24,7 @@ app.route('/').get(function(req, res) {
 
 // doc api route
 app.route('/simplon/api').get(function(req, res) {
-    res.send("api docs will be here");
+    res.render("index.html");
 });
 
 //register the routes
