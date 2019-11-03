@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Documentation API VOD</title>
+        <style media="screen">
+            body {
+                min-width: 100vw;
+                min-height: 100vh;
+                background: #282828;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: whitesmoke;
+                padding: 0;
+                margin: 0;
+                flex-wrap: wrap;
+                text-align: center;
+            }
+            section {
+                width: 100%;
+                background: whitesmoke;
+                color: #282828;
+            }
+            code {
+                background-color: #eee;
+                border-radius: 3px;
+                font-family: courier, monospace;
+                padding: 0 3px;
+            }
+            article {
+                width: 90%;
+                margin: 5%;
+                border: 2px dashed #282828;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div>
+                <h1>Documentation API</h1>
+            </div>
+            <div>
+                <h5>Vous trouverez ci-dessous un détails des requettes possibles de l'API ainsi que de ses éventuelle retours</h5>
+            </div>
+        </header>
+        <section>
+            <h3>Les requettes GET</h3>
+            <article>
+                <pre>L'url ci-dessous retourne tout les utilisateurs inscrit sur l'API</pre>
+                <p><code>https://brianboudrioux.fr/simplon/api/users</code></p>
+            </article>
+            <article>
+                <pre>L'url ci-dessous retourne toutes les catégories de films</pre>
+                <p><code>https://brianboudrioux.fr/simplon/api/categories</code></p>
+            </article>
+            <article>
+                <pre>L'url ci-dessous retourne tout les films/series</pre>
+                <p><code>https://brianboudrioux.fr/simplon/api/products</code></p>
+            </article>
+            <article>
+                <pre>L'url ci-dessous retourne tout les films/series appartenant a la catégorie dont l'id est spécifier en parametres</pre>
+                <p><code>https://brianboudrioux.fr/simplon/api/products/category/category_id</code></p>
+            </article>
+            <article>
+                <pre>L'url ci-dessous retourne tout le/la film/serie dont l'id est spécifier en parametres</pre>
+                <p><code>https://brianboudrioux.fr/simplon/api/products/product_id</code></p>
+            </article>
+        </section>
+        <section>
+            <h3>Les requettes POST</h3>
+            <article>
+                <pre>L'url ci-dessous permet d'enregistrer un nouvel utilisateurs dans notre API</pre>
+                <p><code>https://brianboudrioux.fr/simplon/api/users</code></p>
+                <pre>Pour cela vous devez passer en parametres de votre requettes POST les valeurs correspondant au champs suivant :</pre>
+                <p><code>username, email, password</code></p>
+            </article>
+            <article>
+                <pre>L'url ci-dessous permet de vérifier la présence d'un utilisateur dans notre API, très utile pour effectuer une connexion !</pre>
+                <p><code>https://brianboudrioux.fr/simplon/api/connect</code></p>
+                <pre>Pour cela vous devez passer en parametres de votre requettes POST les valeurs correspondant au champs suivant :</pre>
+                <p><code>email, password</code></p>
+            </article>
+            <article>
+                <pre>L'url ci-dessous retourne tout les films/series appartenant aux catégories spécifier en parametres</pre>
+                <p><code>https://brianboudrioux.fr/simplon/api/products/categories</code></p>
+                <pre>Pour cela vous devez passer en parametres de votre requettes POST les valeurs correspondant au champs suivant :</pre>
+                <p><code>categories[]</code></p>
+            </article>
+        </section>
+    </body>
+</html>

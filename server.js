@@ -9,22 +9,22 @@ var mongoose = require('mongoose'),
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/eCommerceApiDb', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/eCommerceApiDb', {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useCreateIndex', true);
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
+app.engine('html', require('ejs').renderFile);
 
 // index route
 app.route('/').get(function(req, res) {
-    res.send("nothing here, go away !");
+    res.render("index.html");
 });
 
 // doc api route
 app.route('/simplon/api').get(function(req, res) {
-    res.render("index.html");
+    res.render("doc.html");
 });
 
 //register the routes
