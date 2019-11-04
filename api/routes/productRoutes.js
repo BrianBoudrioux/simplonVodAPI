@@ -11,6 +11,9 @@ module.exports = function(app) {
   app.route('/simplon/api/products/:productId')
     .get(product.read_a_product);
 
+  app.route('/simplon/api/products/categoryName/:name')
+    .get(product.list_all_products_by_category_name);
+
   app.route('/simplon/api/products/category/:categoryId')
     .get(product.list_all_products_by_category);
 

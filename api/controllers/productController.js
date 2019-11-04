@@ -2,6 +2,7 @@
 
 
 var mongoose = require('mongoose'),
+  Categories = mongoose.model('Categories'),
   Products = mongoose.model('Products');
 
 exports.list_all_products = function(req, res) {
@@ -17,6 +18,19 @@ exports.list_all_products_by_category = function(req, res) {
       if (err)
         res.send(err);
       res.json(product);
+    });
+};
+
+exports.list_all_products_by_category_name = function(req, res) {
+    Categories.findOne({ 'name' : { '$regex' : req.params.name, '$options' : 'i' } }, function(err, category) {
+        if (err)
+            res.send(err);
+
+        Products.find({category: category._id}, function(err, product) {
+            if (err)
+                res.send(err);
+            res.json(product);
+        });
     });
 };
 
