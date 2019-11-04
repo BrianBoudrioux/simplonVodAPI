@@ -21,16 +21,11 @@ exports.list_all_products_by_category = function(req, res) {
     });
 };
 
-exports.list_all_products_by_category_name = function(req, res) {
-    Categories.findOne({ 'name' : { '$regex' : req.params.name, '$options' : 'i' } }, function(err, category) {
+exports.list_all_products_by_product_name = function(req, res) {
+    Products.find({ name : { $regex : req.params.name, $options : 'i' } }, function(err, product) {
         if (err)
             res.send(err);
-
-        Products.find({category: category._id}, function(err, product) {
-            if (err)
-                res.send(err);
-            res.json(product);
-        });
+        res.json(product);
     });
 };
 
