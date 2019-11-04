@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
   User = require('./api/models/userModel'),
   Category = require('./api/models/categoryModel'),
   Product = require('./api/models/productModel'),
-  bodyParser = require('body-parser');
+  bodyParser = require('body-parser'),
+  cors = require('cors');
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
@@ -15,6 +16,7 @@ mongoose.set('useCreateIndex', true);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 app.engine('html', require('ejs').renderFile);
 
 // index route
