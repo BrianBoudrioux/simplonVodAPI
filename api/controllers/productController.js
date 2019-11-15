@@ -30,7 +30,7 @@ exports.list_all_products_by_product_name = function(req, res) {
 };
 
 exports.list_all_products_by_categories = function(req, res) {
-        Products.find({category: req.body.categories}, function(err, product) {
+        Products.find({category: { $in: req.body.categories } }, function(err, product) {
           if (err)
             res.send(err);
           res.json(product);
