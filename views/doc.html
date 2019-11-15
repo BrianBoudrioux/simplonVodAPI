@@ -82,6 +82,12 @@
                 <pre>Exemple (POSTMAN) : </pre>
                 <img src="../../getProductsByName.PNG" alt="get categories exemple call postman">
             </article>
+            <article>
+                <pre>L'url ci-dessous retourne tout les favoris correspondant a l'utilisateur dont l'id est spécifier dans parametres</pre>
+                <p><code>https://brianboudrioux.fr/simplon/api/products/favorites/user_id</code></p>
+                <pre>Exemple (POSTMAN) : </pre>
+                <img src="../../getFavorites.PNG" alt="get categories exemple call postman">
+            </article>
         </section>
         <section>
             <h3>Les requettes POST</h3>
@@ -124,6 +130,14 @@
                 <p><code>name, description, picture, media, categories[]</code></p>
                 <pre>Exemple (POSTMAN) : </pre>
                 <img src="../../postCreateProduct.PNG" alt="get categories exemple call postman">
+            </article>
+            <article>
+                <pre>L'url ci-dessous permet d'enregistrer un film/serie dans notre API pour l'utilisateur dont l'id est spécifier</pre>
+                <p><code>https://brianboudrioux.fr/simplon/api/products/favorites/:userId</code></p>
+                <pre>Pour cela vous devez passer en parametres de votre requettes POST les valeurs correspondant au champs suivant :</pre>
+                <p><code>product</code> (la valeur de product doit correspondre a un id de product !)</p>
+                <pre>Exemple (POSTMAN) : </pre>
+                <img src="../../postAddFavorite.PNG" alt="get categories exemple call postman">
             </article>
         </section>
     </body>
