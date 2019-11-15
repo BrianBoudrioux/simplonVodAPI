@@ -40,22 +40,11 @@ exports.add_favorite_for_user = function(req, res) {
     });
 };
 
-getFavorites: async (favorite) => {
-    let product = await Products.findOne({_id: favorite.product}).exec();
-    return product;
-}
-
 exports.list_all_favorites_for_user = (req, res) => {
     Favorites.find({ user : req.params.userId }, function(err, favorites) {
         if (err)
             res.send(err);
-
-        let products = [];
-        for (let i = 0; i < favorites.length; i++) {
-            let product = getFavorites(favorites[i]);
-            products.push(product)
-        }
-        res.json(products);
+        res.json(favorites);
     });
 };
 
