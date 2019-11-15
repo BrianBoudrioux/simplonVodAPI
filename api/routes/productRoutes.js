@@ -7,6 +7,10 @@ module.exports = function(app) {
     .get(product.list_all_products)
     .post(product.create_a_product);
 
+    app.route('/simplon/api/products/favorites/:userId')
+      .get(product.list_all_favorites_for_user)
+      .post(product.add_favorite_for_user);
+
 
   app.route('/simplon/api/products/:productId')
     .get(product.read_a_product);

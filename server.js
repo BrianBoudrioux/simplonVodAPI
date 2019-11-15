@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
   User = require('./api/models/userModel'),
   Category = require('./api/models/categoryModel'),
   Product = require('./api/models/productModel'),
+  Favorite = require('./api/models/favoriteModel'),
   bodyParser = require('body-parser'),
   cors = require('cors');
 

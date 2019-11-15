@@ -3,6 +3,7 @@
 
 var mongoose = require('mongoose'),
   Categories = mongoose.model('Categories'),
+  Favorites = mongoose.model('Favorites'),
   Products = mongoose.model('Products');
 
 exports.list_all_products = function(req, res) {
@@ -26,6 +27,34 @@ exports.list_all_products_by_product_name = function(req, res) {
         if (err)
             res.send(err);
         res.json(product);
+    });
+};
+
+exports.add_favorite_for_user = function(req, res) {
+    var new_favorite = new Favorites([req.body.product, req.params.userId]);
+    new_favorite.save(function(err, favorite) {
+      if (err)
+        res.send(err);
+
+      res.json(favorite);
+    });
+};
+
+exports.list_all_favorites_for_user = function(req, res) {
+    Favorites.find({ user : req.params.userId }, function(err, favorites) {
+        if (err)
+            res.send(err);
+
+        let products = [];
+        for (let i = 0; i < favorites.length; i++) {
+            Products.findOne({_id: favorites[i].product}, function(err, product) {
+                if (err)
+                    res.send(err);
+
+                products.push(product);
+            });
+        }
+        res.json(products);
     });
 };
 
