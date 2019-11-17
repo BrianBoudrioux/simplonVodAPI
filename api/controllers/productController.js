@@ -44,7 +44,17 @@ exports.list_all_favorites_for_user = (req, res) => {
     Favorites.find({ user : req.params.userId }, function(err, favorites) {
         if (err)
             res.send(err);
-        res.json(favorites);
+
+        let fav_tab = [];
+        for (var i = 0; i < favories.length; i++) {
+            fav_tab.push(favories[i].product);
+        }
+        Products.find({_id: { $in: fav_tab } }, function(err, product) {
+          if (err)
+            res.send(err);
+
+          res.json(product);
+        });
     });
 };
 
