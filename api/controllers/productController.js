@@ -54,6 +54,7 @@ exports.list_all_favorites_for_user = (req, res) => {
             res.send(err);
 
           res.json(product);
+          res.end();
         });
     });
 };
