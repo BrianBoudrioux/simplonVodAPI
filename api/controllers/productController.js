@@ -40,21 +40,20 @@ exports.add_favorite_for_user = function(req, res) {
     });
 };
 
-exports.list_all_favorites_for_user = (req, res) => {
+exports.list_all_favorites_for_user = async (req, res) => {
     Favorites.find({ user : req.params.userId }, function(err, favorites) {
         if (err)
             res.send(err);
 
         let fav_tab = [];
-        for (var i = 0; i < favories.length; i++) {
-            fav_tab.push(favories[i].product);
+        for (var i = 0; i < favorites.length; i++) {
+            fav_tab.push(favorites[i].product);
         }
         Products.find({_id: { $in: fav_tab } }, function(err, product) {
           if (err)
             res.send(err);
 
           res.json(product);
-          res.end();
         });
     });
 };
