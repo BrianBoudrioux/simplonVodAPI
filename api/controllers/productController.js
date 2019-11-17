@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
   Products = mongoose.model('Products');
 
 exports.list_all_products = function(req, res) {
-      tata.find({}, function(err, production) {
+      Products.find({}, function(err, product) {
       if (err)
         res.send(err);
       res.json(product);
@@ -18,17 +18,10 @@ exports.list_all_products_by_category = function(req, res) {
       Products.find({category: req.params.categoryId}, function(err, product) {
       if (err)
         res.send(err);
-      response.json(product);
+      res.json(product);
     });
 };
 
-exports.list_all_products_by_product_name = function(req, res) {
-    Products.find({ name : { $regex : req.params.name, $options : 'i' } }, function(err, product) {
-        if (err)
-            res.send(err);
-        res.json(product);
-    });
-};
 exports.list_all_products_by_product_name = function(req, res) {
     Products.find({ name : { $regex : req.params.name, $options : 'i' } }, function(err, product) {
         if (err)
@@ -39,12 +32,6 @@ exports.list_all_products_by_product_name = function(req, res) {
 
 exports.add_favorite_for_user = function(req, res) {
     var new_favorite = new Favorites({product: req.body.product, user: req.params.userId});
-    new_favorite.save(function(err, favorite) {
-      if (err)
-        res.send(err);
-
-      res.json(favorite);
-    });
     new_favorite.save(function(err, favorite) {
       if (err)
         res.send(err);
