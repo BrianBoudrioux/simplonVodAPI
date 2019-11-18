@@ -3,7 +3,8 @@
 
 var mongoose = require('mongoose'),
   Categories = mongoose.model('Categories'),
-  Favorites = mongoose.model('Favoritess'),
+  Favorites = mongoose.model('Favorites'),
+  Favorites = mongoose.model('Favorites'),
   Products = mongoose.model('Products');
 
 exports.list_all_products = function(req, res) {
