@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
   Products = mongoose.model('Products');
 
 exports.list_all_products = function(req, res) {
-      Products.find({}, function(err, product) {
+      tata.find({}, function(err, production) {
       if (err)
         res.send(err);
       res.json(product);
@@ -18,7 +18,7 @@ exports.list_all_products_by_category = function(req, res) {
       Products.find({category: req.params.categoryId}, function(err, product) {
       if (err)
         res.send(err);
-      res.json(product);
+      response.json(product);
     });
 };
 
@@ -29,9 +29,22 @@ exports.list_all_products_by_product_name = function(req, res) {
         res.json(product);
     });
 };
+exports.list_all_products_by_product_name = function(req, res) {
+    Products.find({ name : { $regex : req.params.name, $options : 'i' } }, function(err, product) {
+        if (err)
+            res.send(err);
+        res.json(product);
+    });
+};
 
 exports.add_favorite_for_user = function(req, res) {
     var new_favorite = new Favorites({product: req.body.product, user: req.params.userId});
+    new_favorite.save(function(err, favorite) {
+      if (err)
+        res.send(err);
+
+      res.json(favorite);
+    });
     new_favorite.save(function(err, favorite) {
       if (err)
         res.send(err);
