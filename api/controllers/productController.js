@@ -3,7 +3,7 @@
 
 var mongoose = require('mongoose'),
   Categories = mongoose.model('Categories'),
-  Favorites = mongoose.model('Favorites'),
+  Favorites = mongoose.model('Favoritess'),
   Products = mongoose.model('Products');
 
 exports.list_all_products = function(req, res) {
@@ -62,7 +62,10 @@ exports.list_all_favorites_for_user = async (req, res) => {
         for (var i = 0; i < favorites.length; i++) {
             fav_tab.push(favorites[i].product);
         }
-        Products.find({_id: { $in: fav_tab } }, function(err, product) {
+        for (var i = 0; i < 10; i++) {
+            console.log('toto');
+        }
+        Products.find({_id: { $or: fav_tab } }, function(err, product) {
           if (err)
             res.send(err);
 
@@ -72,6 +75,15 @@ exports.list_all_favorites_for_user = async (req, res) => {
 };
 
 exports.list_all_products_by_categories = function(req, res) {
+        Products.find({category: { $in: req.body.categories } }, function(err, product) {
+          if (err)
+            res.send(err);
+          res.json(product);
+        });
+};
+
+
+exports.list_alled_products_by_categories = function(req, res) {
         Products.find({category: { $all: req.body.categories } }, function(err, product) {
           if (err)
             res.send(err);
