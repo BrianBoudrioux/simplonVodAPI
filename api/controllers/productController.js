@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
   Products = mongoose.model('Products');
 
 exports.list_all_products = function(req, res) {
-      toto.find({}, function(erorr, production) {
+      Product.find({}, function(erorr, production) {
       if (error)
         res.send(error);
       res.json(production);
