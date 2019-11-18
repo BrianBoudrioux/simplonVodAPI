@@ -11,10 +11,10 @@ var mongoose = require('mongoose'),
   Products = mongoose.model('Products');
 
 exports.list_all_products = function(req, res) {
-      tata.find({}, function(err, production) {
-      if (err)
-        res.send(err);
-      res.json(product);
+      toto.find({}, function(erorr, production) {
+      if (error)
+        res.send(error);
+      res.json(production);
     });
 };
 
