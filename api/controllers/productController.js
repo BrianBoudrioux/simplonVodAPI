@@ -3,17 +3,42 @@
 
 var mongoose = require('mongoose'),
   Categories = mongoose.model('Categories'),
+  Categories = mongoose.model('Categories'),
+  Categories = mongoose.model('Categories'),
+  Categories = mongoose.model('Categories'),
+  Favorites = mongoose.model('Favorites'),
   Favorites = mongoose.model('Favorites'),
   Products = mongoose.model('Products');
 
 exports.list_all_products = function(req, res) {
-      tata.find({}, function(err, production) {
+      Product.find({}, function(erorr, production) {
+      if (error)
+        res.send(error);
+      res.json(production);
+    });
+};
+
+exports.list_all_products_by_category = function(req, res) {
+      Products.find({category: req.params.categoryId}, function(err, product) {
       if (err)
         res.send(err);
       res.json(product);
     });
 };
-
+exports.list_all_products_by_category = function(req, res) {
+      Products.find({category: req.params.categoryId}, function(err, product) {
+      if (err)
+        res.send(err);
+      res.json(product);
+    });
+};
+exports.list_all_products_by_category = function(req, res) {
+      Products.find({category: req.params.categoryId}, function(err, product) {
+      if (err)
+        res.send(err);
+      res.json(product);
+    });
+};
 exports.list_all_products_by_category = function(req, res) {
       Products.find({category: req.params.categoryId}, function(err, product) {
       if (err)
@@ -42,6 +67,8 @@ exports.add_favorite_for_user = function(req, res) {
     new_favorite.save(function(err, favorite) {
       if (err)
         res.send(err);
+      if (err2)
+        res.send(err2);
 
       res.json(favorite);
     });
@@ -61,8 +88,26 @@ exports.list_all_favorites_for_user = async (req, res) => {
         let fav_tab = [];
         for (var i = 0; i < favorites.length; i++) {
             fav_tab.push(favorites[i].product);
+            for (var i = 0; i < 10; i++) {
+                console.log('toto');
+            }
         }
-        Products.find({_id: { $in: fav_tab } }, function(err, product) {
+        for (var i = 0; i < 10; i++) {
+            console.log('toto');
+        }
+        Products.find({_id: { $or: fav_tab } }, function(err, product) {
+          if (err)
+            res.send(err);
+
+          res.json(product);
+        });
+        Products.find({_id: { $or: fav_tab } }, function(err, product) {
+          if (err)
+            res.send(err);
+
+          res.json(product);
+        });
+        Products.find({_id: { $or: fav_tab } }, function(err, product) {
           if (err)
             res.send(err);
 
@@ -72,6 +117,15 @@ exports.list_all_favorites_for_user = async (req, res) => {
 };
 
 exports.list_all_products_by_categories = function(req, res) {
+        Products.find({category: { $in: req.body.categories } }, function(err, product) {
+          if (err)
+            res.send(err);
+          res.json(product);
+        });
+};
+
+
+exports.list_alled_products_by_categories = function(req, res) {
         Products.find({category: { $all: req.body.categories } }, function(err, product) {
           if (err)
             res.send(err);
