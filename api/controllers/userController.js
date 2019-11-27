@@ -38,6 +38,22 @@ exports.read_a_user = function(req, res) {
     });
 };
 
+exports.list_all_users_by_name = function(req, res) {
+    Users.find({ name : { $regex : req.params.name, $options : 'i' } }, function(err, users) {
+        if (err)
+            res.send(err);
+        res.json(users);
+    });
+};
+
+exports.list_all_users_by_skills = function(req, res) {
+    Users.find({ skills : { $in : req.body.skills } }, function(err, users) {
+        if (err)
+            res.send(err);
+        res.json(users);
+    });
+};
+
 
 exports.update_a_user = function(req, res) {
 
