@@ -13,13 +13,16 @@ module.exports = function(app) {
 
 
   app.route('/simplon/api/products/:productId')
-    .get(product.read_a_product);
+    .get(product.read_a_product)
+    .update(product.update_a_product)
+    .delete(product.delete_a_product);
 
   app.route('/simplon/api/productsByName/:name')
     .get(product.list_all_products_by_product_name);
 
   app.route('/simplon/api/products/category/:categoryId')
-    .get(product.list_all_products_by_category);
+    .get(product.list_all_products_by_category)
+    .delete(product.delete_all_products_by_category);
 
   app.route('/simplon/api/products/categories')
     .post(product.list_all_products_by_categories);
