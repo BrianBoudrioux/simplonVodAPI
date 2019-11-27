@@ -21,6 +21,16 @@ var UserSchema = new Schema({
     type: String,
     required: 'Enter your password'
   },
+  type: {
+    type: String,
+    trim: true,
+    lowercase: true
+  },
+  skills: [{
+    type: String,
+    trim: true,
+    lowercase: true
+  }],
   created_date: {
     type: Date,
     default: Date.now
