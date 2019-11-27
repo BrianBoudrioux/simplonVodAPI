@@ -85,31 +85,31 @@ exports.read_a_product = function(req, res) {
     });
 };
 
-// exports.update_a_product = function(req, res) {
-//
-//     Products.findOneAndUpdate({_id: req.params.productId}, req.body, {new: true}, function(err, product) {
-//       if (err)
-//         res.send(err);
-//       res.json(product);
-//     });
-// };
+exports.update_a_product = function(req, res) {
 
-// exports.delete_a_product = function(req, res) {
-//     Products.deleteOne({
-//       _id: req.params.productId
-//     }, function(err, product) {
-//       if (err)
-//         res.send(err);
-//       res.json({ message: 'Categories successfully deleted' });
-//     });
-// };
-//
-// exports.delete_all_products_by_category = function(req, res) {
-//     Products.deleteMany({
-//       category: req.params.categoryId
-//     }, function(err, product) {
-//       if (err)
-//         res.send(err);
-//       res.json({ message: 'Categories successfully deleted' });
-//     });
-// };
+    Products.findOneAndUpdate({_id: req.params.productId}, req.body, {new: true}, function(err, product) {
+      if (err)
+        res.send(err);
+      res.json(product);
+    });
+};
+
+exports.delete_a_product = function(req, res) {
+    Products.deleteOne({
+      _id: req.params.productId
+    }, function(err, product) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'Categories successfully deleted' });
+    });
+};
+
+exports.delete_all_products_by_category = function(req, res) {
+    Products.deleteMany({
+      category: req.params.categoryId
+    }, function(err, product) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'Categories successfully deleted' });
+    });
+};
