@@ -31,6 +31,10 @@ var UserSchema = new Schema({
     trim: true,
     lowercase: true
   }],
+  description: {
+    type: String,
+    trim: true
+  },
   created_date: {
     type: Date,
     default: Date.now
