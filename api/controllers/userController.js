@@ -39,7 +39,7 @@ exports.read_a_user = function(req, res) {
 };
 
 exports.list_all_users_by_name = function(req, res) {
-    Users.find({ name : { $regex : req.params.name, $options : 'i' } }, function(err, users) {
+    Users.find({ username : { $regex : req.params.name, $options : 'i' } }, function(err, users) {
         if (err)
             res.send(err);
         res.json(users);
