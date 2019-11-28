@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   app.route('/simplon/api/products/:productId')
     .get(product.read_a_product)
-    .update(product.update_a_product)
+    .put(product.update_a_product)
     .delete(product.delete_a_product);
 
   app.route('/simplon/api/productsByName/:name')
