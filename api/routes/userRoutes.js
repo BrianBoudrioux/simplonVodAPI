@@ -11,8 +11,8 @@ module.exports = function(app) {
   app.route('/simplon/api/users/findBySkills')
     .post(user.list_all_users_by_skills);
   
-  app.route('/simplon/api/users/findByName')
-    .post(user.list_all_users_by_name);
+  app.route('/simplon/api/users/findByName/:name')
+    .get(user.list_all_users_by_name);
 
 
   app.route('/simplon/api/users/:userId')
